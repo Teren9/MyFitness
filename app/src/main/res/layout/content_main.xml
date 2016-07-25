@@ -16,7 +16,17 @@
         android:layout_height="wrap_content"
         android:id="@+id/exercisesList"
         android:clickable="true"
-        android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:choiceMode="singleChoice" />
+        android:choiceMode="singleChoice"
+        android:layout_below="@+id/search" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/search"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:hint="@string/abc_search_hint" />
 </RelativeLayout>
