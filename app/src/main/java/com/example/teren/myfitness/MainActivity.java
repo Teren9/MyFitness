@@ -83,16 +83,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                exerciseList = new LinkedList<>();
-                String searched_term = String.valueOf(search.getText());
-
-                for(Exercise item : fullExerciseList ){
-                    if(item.toString().contains(searched_term))
-                        exerciseList.add(item);
-                }
-
-                fillListView();
-
+                narrow_list();
             }
         });
 
@@ -101,6 +92,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume(){
         super.onResume();
+        fullExerciseList = db.getAllExercises();
+        narrow_list();
+
         this.fillListView();
     }
 
@@ -124,6 +118,18 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    protected void narrow_list(){
+        exerciseList = new LinkedList<>();
+        String searched_term = String.valueOf(search.getText());
+
+        for(Exercise item : fullExerciseList ){
+            if(item.toString().contains(searched_term))
+                exerciseList.add(item);
+        }
+
+        fillListView();
     }
 
     protected void addExercisesTesting(){
